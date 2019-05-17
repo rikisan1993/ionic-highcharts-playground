@@ -18,6 +18,10 @@ export class HomePage {
   lineChartOptions;
   lineChartInstance;
 
+  chartResult;
+  weeklyDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  weeklyDaysLong = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
   constructor(private platform: Platform) { }
 
   logBarChart(event) {
@@ -74,6 +78,7 @@ export class HomePage {
     for (let i = 0; i < 7; i++) {
       result.push(Math.round(Math.random() * 100));
     }
+    this.chartResult = result;
     return result;
   }
 
@@ -111,7 +116,7 @@ export class HomePage {
         height: this._calculateChartHeight(this.platform.height(), this.platform.width()),
         alignTicks: false,
         type: type,
-        margin: [30, 30, 30, 40],
+        margin: [20, 35, 20, 40],
         backgroundColor: 'rgba(0,0,0,0)',
         style: {
           fontFamily: '\"Roboto\", \"Lucida Grande\", \"Lucida Sans Unicode\", Verdana, Arial, Helvetica, sans-serif',
@@ -126,30 +131,13 @@ export class HomePage {
         enabled: false
       },
       yAxis: {
-        tickInterval: 10,
-        title: {
-          text: null
+        title:{
+          text:null
         },
-        gridLineColor: 'rgba(255,255,255,.1)',
-        lineColor: 'rgba(255,255,255,.1)',
-        labels: {
-          style: {
-            color: 'rgba(255,255,255,.6)',
-            fontSize: '9px'
-          }
-        },
-
+        
       },
       xAxis: {
-        categories: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-        gridLineColor: 'rgba(255,255,255,.1)',
-        lineColor: 'rgba(255,255,255,.1)',
-        labels: {
-          style: {
-            color: 'rgba(255,255,255,.6)',
-            fontSize: '9px'
-          }
-        }
+        categories: this.weeklyDays
       },
       plotOptions: {
         series: {
