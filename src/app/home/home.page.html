@@ -10,27 +10,31 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngIf="barChartOptions">
-        <highcharts-chart [Highcharts]="Highcharts" [options]="barChartOptions" (chartInstance)="logBarChart($event)"
-          style="display: block;margin:0">
-        </highcharts-chart>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-list lines="none" *ngIf="chartResult">
-          <ion-list-header>
-            <ion-label>Details</ion-label>
-          </ion-list-header>
-          <ion-item href="#" *ngFor="let result of chartResult; let i = index">
-            <ion-label>{{ weeklyDaysLong[i] }}</ion-label>
-            <ion-label slot="end"><span style="display:inline-block;width:100%;text-align:right">{{result}}</span></ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
+  <super-tabs>
+    <super-tabs-toolbar slot="top">
+      <super-tab-button>
+        <ion-icon name="list"></ion-icon>
+        <ion-label>Summary</ion-label>
+      </super-tab-button>
+      <super-tab-button>
+        <ion-icon name="list"></ion-icon>
+        <ion-label>Trends</ion-label>
+      </super-tab-button>
+      <super-tab-button>
+        <ion-icon name="list"></ion-icon>
+        <ion-label>Distribution</ion-label>
+      </super-tab-button>
+    </super-tabs-toolbar>
+    <super-tabs-container>
+      <super-tab>
+        <ion-nav [root]="summaryPage"></ion-nav> 
+      </super-tab>
+      <super-tab>
+        <ion-nav [root]="trendPage"></ion-nav>
+      </super-tab>
+      <super-tab>
+        <ion-nav [root]="distributionPage"></ion-nav>
+      </super-tab>
+    </super-tabs-container>
+  </super-tabs>
 </ion-content>
