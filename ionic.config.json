@@ -1,0 +1,7 @@
+{
+  "name": "ionic-highcharts-playground",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
